@@ -1,0 +1,50 @@
+{
+  "devDependencies": {
+    "babel-cli": "^6.26.0",
+    "babel-plugin-transform-class-properties": "^6.24.1",
+    "babel-preset-env": "^1.7.0",
+    "babel-preset-flow": "^6.23.0",
+    "babel-preset-react": "^6.24.1",
+    "babel-register": "^6.26.0",
+    "husky": "^0.14.3",
+    "lint-staged": "^7.1.0",
+    "parcel": "^1.8.1",
+    "prettier": "^1.12.1",
+    "react-dom": "^16.3.2"
+  },
+  "dependencies": {
+    "react": "^16.3.2"
+  },
+  "scripts": {
+    "precommit": "lint-staged",
+    "example": "parcel example/index.html",
+    "build": "rm -rf dist && babel src -d dist"
+  },
+  "lint-staged": {
+    "*.{js,json,md}": ["prettier --write", "git add"]
+  },
+
+  "babel": {
+    "presets": [
+      [
+        "env",
+        {
+          "loose": true,
+          "targets": {
+            "browsers": [">0.5%", "not dead"]
+          }
+        }
+      ],
+      "flow",
+      "react"
+    ],
+    "plugins": ["transform-class-properties"]
+  },
+  "prettier": {
+    "printWidth": 95,
+    "singleQuote": true,
+    "semi": false,
+    "bracketSpacing": true,
+    "jsxBracketSameLine": true
+  }
+}
