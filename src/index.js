@@ -12,7 +12,6 @@ export default class PasteContainer extends Component {
   static displayName = 'PasteContainer'
 
   static defaultProps = {
-    container: window,
     onPaste: () => null,
     errorHandler: () => null,
     acceptedFiles: ['image/gif', 'image/png', 'image/jpeg', 'image/bmp']
@@ -21,6 +20,8 @@ export default class PasteContainer extends Component {
   state = {
     items: []
   }
+
+  getContainer = () => (this.props.container ? this.props.container : window)
 
   isValidFormat = fileType => this.props.acceptedFiles.includes(fileType)
 
@@ -53,14 +54,16 @@ export default class PasteContainer extends Component {
   pushImage = source => this.setState(prevState => ({ items: [...prevState.items, source] }))
 
   componentDidMount() {
-    this.props.container.addEventListener('paste', this.pasteHandler)
+    const elm = this.getContainer()
+    elm.addEventListener('paste', this.pasteHandler)
   }
   componentDidUpdate() {
     this.props.onPaste(this.state.items)
   }
 
   componentWillUnmount() {
-    this.props.conainter.removeEventListener('paste', this.pasteHandler)
+    const elm = this.getContainer()
+    elm.removeEventListener('paste', this.pasteHandler)
   }
   render() {
     const { items } = this.state
