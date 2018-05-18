@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import { render } from 'react-dom'
-import PasteContainer from '../src/'
+import Gluejar from '../src/'
 
 const styles = {
   fontFamily: 'sans-serif',
@@ -30,7 +30,7 @@ class App extends Component {
     return (
       <div style={styles}>
         <Instructions />
-        <PasteContainer
+        <Gluejar
           onPaste={files => console.log(files)}
           errorHandler={err => console.error(err)}>
           {images =>
@@ -39,7 +39,7 @@ class App extends Component {
               <img src={image} key={image} alt={`Pasted: ${image}`} style={imageStyle} />
             ))
           }
-        </PasteContainer>
+        </Gluejar>
       </div>
     )
   }

@@ -8,8 +8,8 @@ import { Component } from 'react'
 //   {images => images.map((image, i) => <Image src={image} key={i} />)}
 // </PasteContainer>
 
-export default class PasteContainer extends Component {
-  static displayName = 'PasteContainer'
+export default class Gluejar extends Component {
+  static displayName = 'Gluejar'
 
   static defaultProps = {
     onPaste: () => null,
