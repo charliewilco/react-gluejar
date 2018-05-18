@@ -29,12 +29,16 @@ export default class Gluejar extends Component {
 
   coercedItemArray = (items, cb) => {
     // NOTE: This needs to be a for loop
-    if (window.Clipboard) {
+    if (window.Clipboard || window.ClipboardEvent) {
       for (let i = 0; i < items.length; i++) {
         if (this.isValidFormat(items[i].type) !== false) {
           let blob = items[i].getAsFile()
+          let webkitBlob = items[i].webkitGetAsEntry()
           let URL = window.URL || window.webkitURL
+
+          console.log(items[i])
           if (blob) {
+            console.log(blob, webkitBlob)
             // We shouldn't fire the callback if we can't create `new Blob()`
             let src = URL.createObjectURL(blob)
             cb(src)
@@ -46,10 +50,12 @@ export default class Gluejar extends Component {
     }
   }
 
-  checkPasted = (e, cb) =>
+  checkPasted = (e, cb) => {
+    console.log(e)
     e.clipboardData && e.clipboardData.items.length > 0
       ? this.coercedItemArray(e.clipboardData.items, cb)
       : this.props.errorHandler(`Sorry, to bother you but there was no image pasted.`)
+  }
 
   pushImage = source => this.setState(prevState => ({ items: [...prevState.items, source] }))
 

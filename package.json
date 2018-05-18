@@ -2,7 +2,7 @@
   "name": "react-gluejar",
   "version": "1.0.0",
   "description": "Paste images from your clipboard",
-  "main": "index.js",
+  "main": "dist/index.js",
   "repository": "git@github.com:charliewilco/react-glue-jar.git",
   "author": "Charles ⚡ <charlespeters42@gmail.com>",
   "license": "MIT",
