@@ -6,7 +6,6 @@
   "repository": "git@github.com:charliewilco/react-glue-jar.git",
   "author": "Charles ⚡ <charlespeters42@gmail.com>",
   "license": "MIT",
-  "files": ["dist"],
   "devDependencies": {
     "babel-cli": "^6.26.0",
     "babel-plugin-transform-class-properties": "^6.24.1",
@@ -18,16 +17,20 @@
     "lint-staged": "^7.1.0",
     "parcel": "^1.8.1",
     "prettier": "^1.12.1",
-    "react-dom": "^16.3.2"
+    "react-dom": "^16.3.2",
+    "serve": "^6.5.7"
   },
   "dependencies": {
     "react": "^16.3.2"
   },
   "scripts": {
     "precommit": "lint-staged",
+    "prepublish": "yarn bundle",
     "format": "prettier --write ./src/*.js ./example/*.js",
     "example": "parcel example/index.html",
-    "build": "rm -rf dist && babel src -d dist"
+    "bundle": "rm -rf dist && babel src -d dist",
+    "now-start": "serve -s dist",
+    "now-build": "parcel build ./example/index.html"
   },
   "lint-staged": {
     "*.{js,json,md}": ["prettier --write", "git add"]
@@ -54,5 +57,8 @@
     "semi": false,
     "bracketSpacing": true,
     "jsxBracketSameLine": true
+  },
+  "now": {
+    "alias": "react-gluejar.now.sh"
   }
 }

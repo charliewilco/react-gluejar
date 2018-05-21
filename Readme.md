@@ -1,6 +1,6 @@
 # React Gluejar
 
-// Explanation
+> Collects the images you paste from your clipboard.
 
 ## Installation
 
@@ -28,10 +28,29 @@ class App extends Component {
 }
 ```
 
-Run this example locally by [cloning the repo](https://help.github.com/articles/cloning-a-repository/) and running `yarn example` in the root directory.
+Run this example locally by [cloning the repo](https://help.github.com/articles/cloning-a-repository/) and running `yarn example` in the root directory. You can visit the example [here](https://react-gluejar.now.sh/).
 
 ## Usage
 
-* Available Props
-* API spec
-* Working with blobs
+### Available Props
+
+| Prop            | Type            | Description                                      | Default                                                 |
+| --------------- | --------------- | ------------------------------------------------ | ------------------------------------------------------- |
+| `onPaste`       | `Function`      | returns Array of image Blobs, responds to events | `() => null`                                            |
+| `onError`       | `Function`      | returns error messages                           | `() => null`                                            |
+| `children`      | `Function`      | returns Array of history of pasted iamges        | N/A                                                     |
+| `acceptedFiles` | `Array<String>` | Array of accepted files to check for             | `['image/gif', 'image/png', 'image/jpeg', 'image/bmp']` |
+| `container`     | `Element`       | Element object to listen on                      | `window`                                                |
+
+### Browser Support
+
+| Browser | Support |
+| ------- | ------- |
+| Chrome  | 👍      |
+| IE      | 👎      |
+| Firefox | 🙄      |
+| Edge    | 👍      |
+| Safari  | 👍      |
+| Opera   | 👍      |
+
+🙄 = Look there's something going on in Firefox for a while. You can read the tracking issue [here](https://bugzilla.mozilla.org/show_bug.cgi?id=906420), but I don't insight into their timeline or priority.

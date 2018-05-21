@@ -4,7 +4,10 @@ import { Component } from 'react'
 //
 // const Image = ({ src }) => <img src={image} alt={`Pasted: ${image}`} />
 //
-// <PasteContainer onPaste={files => this.method(files)} errorHandler={err => console.error(err)}>
+// <PasteContainer
+//    onPaste={files => this.method(files)}
+//    errorHandler={err => console.error(err)}
+// >
 //   {images => images.map((image, i) => <Image src={image} key={i} />)}
 // </PasteContainer>
 
@@ -27,20 +30,21 @@ export default class Gluejar extends Component {
 
   pasteHandler = e => this.checkPasted(e, this.pushImage)
 
-  coercedItemArray = (items, cb) => {
-    // NOTE: This needs to be a for loop
+  transformImages = (items, cb) => {
+    // NOTE: This needs to be a for loop, it's a list like object
     if (window.Clipboard || window.ClipboardEvent) {
       for (let i = 0; i < items.length; i++) {
         if (this.isValidFormat(items[i].type) !== false) {
-          let blob = items[i].getAsFile()
-          let webkitBlob = items[i].webkitGetAsEntry()
+          // NOTE: returns a Blob instance
+          let blob = items[i].getAsFile() || items[i].webkitGetAsEntry()
+
+          // NOTE: This could probably call `new URL()`
           let URL = window.URL || window.webkitURL
 
-          console.log(items[i])
           if (blob) {
-            console.log(blob, webkitBlob)
             // We shouldn't fire the callback if we can't create `new Blob()`
             let src = URL.createObjectURL(blob)
+
             cb(src)
           }
         } else {
@@ -51,18 +55,18 @@ export default class Gluejar extends Component {
   }
 
   checkPasted = (e, cb) => {
-    console.log(e)
     e.clipboardData && e.clipboardData.items.length > 0
-      ? this.coercedItemArray(e.clipboardData.items, cb)
+      ? this.transformImages(e.clipboardData.items, cb)
       : this.props.errorHandler(`Sorry, to bother you but there was no image pasted.`)
   }
 
-  pushImage = source => this.setState(prevState => ({ items: [...prevState.items, source] }))
+  pushImage = source => this.setState(({ items }) => ({ items: [...items, source] }))
 
   componentDidMount() {
     const elm = this.getContainer()
     elm.addEventListener('paste', this.pasteHandler)
   }
+
   componentDidUpdate() {
     this.props.onPaste(this.state.items)
   }

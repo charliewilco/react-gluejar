@@ -26,13 +26,15 @@ const Sorry = ({ error, onClose }) => (
 )
 
 class App extends Component {
+  onPaste = files => console.log(files)
+
+  onError = err => console.error(err)
+
   render() {
     return (
       <div style={styles}>
         <Instructions />
-        <Gluejar
-          onPaste={files => console.log(files)}
-          errorHandler={err => console.error(err)}>
+        <Gluejar onPaste={this.onPaste} errorHandler={this.onError}>
           {images =>
             images.length > 0 &&
             images.map(image => (
