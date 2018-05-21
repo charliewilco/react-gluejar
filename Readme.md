@@ -2,6 +2,8 @@
 
 > Collects the images you paste from your clipboard.
 
+![Demo using `react-gluejar`](/gluejar.gif)
+
 ## Installation
 
 ```sh
