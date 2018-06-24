@@ -19,8 +19,8 @@ import Gluejar from 'react-gluejar'
 class App extends Component {
   render() {
     return (
-      <Gluejar onPaste={files => console.log(files)} errorHandler={err => console.error(err)}>
-        {images =>
+      <Gluejar onPaste={files => console.log(files)} onError={err => console.error(err)}>
+        {({ images }) =>
           images.length > 0 &&
           images.map(image => <img src={image} key={image} alt={`Pasted: ${image}`} />)
         }
@@ -40,7 +40,7 @@ Run this example locally by [cloning the repo](https://help.github.com/articles/
 | --------------- | --------------- | ------------------------------------------------ | ------------------------------------------------------- |
 | `onPaste`       | `Function`      | returns Array of image Blobs, responds to events | `() => null`                                            |
 | `onError`       | `Function`      | returns error messages                           | `() => null`                                            |
-| `children`      | `Function`      | returns Array of history of pasted iamges        | N/A                                                     |
+| `children`      | `Function`      | returns Array of history of pasted images        | N/A                                                     |
 | `acceptedFiles` | `Array<String>` | Array of accepted files to check for             | `['image/gif', 'image/png', 'image/jpeg', 'image/bmp']` |
 | `container`     | `Element`       | Element object to listen on                      | `window`                                                |
 

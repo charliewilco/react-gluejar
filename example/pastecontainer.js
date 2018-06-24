@@ -3,7 +3,6 @@ import { render } from 'react-dom'
 import Gluejar from '../src/'
 
 const styles = {
-  fontFamily: 'sans-serif',
   maxWidth: 528,
   margin: `1rem auto`
 }
