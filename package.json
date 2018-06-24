@@ -72,6 +72,10 @@
     "jsxBracketSameLine": true
   },
   "now": {
-    "alias": "react-gluejar.now.sh"
+    "alias": "react-gluejar.now.sh",
+    "files": [
+      "src",
+      "example"
+    ]
   }
 }
