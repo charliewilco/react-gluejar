@@ -33,8 +33,8 @@ class App extends Component {
     return (
       <div style={styles}>
         <Instructions />
-        <Gluejar onPaste={this.onPaste} errorHandler={this.onError}>
-          {images =>
+        <Gluejar onPaste={this.onPaste} onError={this.onError}>
+          {({ images }) =>
             images.length > 0 &&
             images.map(image => (
               <img src={image} key={image} alt={`Pasted: ${image}`} style={imageStyle} />
