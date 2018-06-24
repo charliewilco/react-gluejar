@@ -3,11 +3,12 @@
   "version": "1.0.0",
   "description": "Paste images from your clipboard",
   "main": "dist/index.js",
-  "repository": "git@github.com:charliewilco/react-glue-jar.git",
+  "repository": "charliewilco/react-gluejar",
   "author": "Charles ⚡ <charlespeters42@gmail.com>",
   "license": "MIT",
   "devDependencies": {
     "babel-cli": "^6.26.0",
+    "babel-core": "^6.26.3",
     "babel-plugin-transform-class-properties": "^6.24.1",
     "babel-preset-env": "^1.7.0",
     "babel-preset-flow": "^6.23.0",
@@ -37,7 +38,10 @@
     "now-build": "parcel build ./example/index.html"
   },
   "lint-staged": {
-    "*.{js,json,md}": ["prettier --write", "git add"]
+    "*.{js,json,md}": [
+      "prettier --write",
+      "git add"
+    ]
   },
   "babel": {
     "presets": [
@@ -46,14 +50,19 @@
         {
           "loose": true,
           "targets": {
-            "browsers": [">0.5%", "not dead"]
+            "browsers": [
+              ">0.5%",
+              "not dead"
+            ]
           }
         }
       ],
       "flow",
       "react"
     ],
-    "plugins": ["transform-class-properties"]
+    "plugins": [
+      "transform-class-properties"
+    ]
   },
   "prettier": {
     "printWidth": 95,
