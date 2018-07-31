@@ -1,6 +1,4 @@
-// @flow
-
-import { Component } from 'react'
+import * as React from 'react'
 
 /* <PasteContainer
   onPaste={files => files.length > 0 && this.props.onFileAccepted(files[0], files[0])}
@@ -17,19 +15,21 @@ import { Component } from 'react'
 //   {({images}) => images.map((image, i) => <Image src={image} key={i} />)}
 // </PasteContainer>
 
-type Props = {
-  children?: Function,
-  container: Element,
-  onPaste: Function,
-  onError: Function,
-  acceptedFiles: Array<string>
+export interface GluejarState {
+  images: string[]
 }
 
-type State = {
-  items: Array<*>
+export interface GluejarProps {
+  children?: (state: GluejarState) => React.ReactNode
+  container: HTMLElement
+  onPaste: (state: GluejarState) => void
+  onError: (error: string) => void
+  acceptedFiles: string[]
 }
 
-export default class Gluejar extends Component<Props, State> {
+type BlobLikeFile = File | null
+
+export default class Gluejar extends React.Component<GluejarProps, GluejarState> {
   static displayName = 'Gluejar'
 
   static defaultProps = {
@@ -39,35 +39,30 @@ export default class Gluejar extends Component<Props, State> {
   }
 
   state = {
-    items: []
+    images: []
   }
 
-  getContainer = (): Element => this.props.container || window
+  getContainer = (): HTMLElement => this.props.container || window
 
-  isValidFormat = (fileType: string) => this.props.acceptedFiles.includes(fileType)
+  isValidFormat = (fileType: string): boolean => this.props.acceptedFiles.includes(fileType)
 
   pasteHandler = (e: ClipboardEvent) => this.checkPasted(e, this.pushImage)
 
   transformImages = (data: DataTransfer, cb: Function) => {
     // NOTE: This needs to be a for loop, it's a list like object
-    if (window.Clipboard || window.ClipboardEvent) {
-      for (let i = 0; i < data.items.length; i++) {
-        if (this.isValidFormat(data.items[i].type) !== false) {
-          // NOTE: returns a Blob instance
-          let blob = data.items[i].getAsFile()
+    for (let i = 0; i < data.items.length; i++) {
+      if (this.isValidFormat(data.items[i].type) !== false) {
+        let blob: BlobLikeFile = data.items[i].getAsFile()
+        let URL = window.URL
 
-          // NOTE: This could probably call `new URL()`
-          let URL = window.URL || window.webkitURL
+        if (blob) {
+          // We shouldn't fire the callback if we can't create `new Blob()`
+          let src = URL.createObjectURL(blob)
 
-          if (blob) {
-            // We shouldn't fire the callback if we can't create `new Blob()`
-            let src = URL.createObjectURL(blob)
-
-            cb(src)
-          }
-        } else {
-          this.props.onError(`Sorry, that's not a format we support`)
+          cb(src)
         }
+      } else {
+        this.props.onError(`Sorry, that's not a format we support`)
       }
     }
   }
@@ -78,7 +73,8 @@ export default class Gluejar extends Component<Props, State> {
       : this.props.onError(`Sorry, to bother you but there was no image pasted.`)
   }
 
-  pushImage = (source: string) => this.setState(({ items }) => ({ items: [...items, source] }))
+  pushImage = (source: string) =>
+    this.setState(({ images }: GluejarState) => ({ images: [...images, source] }))
 
   componentDidMount() {
     const elm: Element = this.getContainer()
@@ -86,16 +82,17 @@ export default class Gluejar extends Component<Props, State> {
   }
 
   componentDidUpdate() {
-    this.props.onPaste(this.state.items)
+    this.props.onPaste(this.state)
   }
 
   componentWillUnmount() {
     const elm: Element = this.getContainer()
     elm.removeEventListener('paste', this.pasteHandler)
   }
+
   render() {
-    const { items } = this.state
+    const { images } = this.state
     const { children } = this.props
-    return children ? children({ images: items }) : null
+    return children ? children({ images }) : null
   }
 }

@@ -2,7 +2,7 @@
 
 > Collects the images you paste from your clipboard.
 
-![Demo using `react-gluejar`](/gluejar.gif)
+![Demo using `react-gluejar`](/.github/gluejar.gif)
 
 ## Installation
 

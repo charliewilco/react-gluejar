@@ -1,5 +1,5 @@
 {
-  "name": "react-gluejar",
+  "name": "@charliewilco/gluejar",
   "version": "1.0.0",
   "description": "Paste images from your clipboard",
   "main": "dist/index.js",
@@ -7,21 +7,15 @@
   "author": "Charles ⚡ <charlespeters42@gmail.com>",
   "license": "MIT",
   "devDependencies": {
-    "babel-cli": "^6.26.0",
-    "babel-core": "^6.26.3",
-    "babel-plugin-transform-class-properties": "^6.24.1",
-    "babel-preset-env": "^1.7.0",
-    "babel-preset-flow": "^6.23.0",
-    "babel-preset-react": "^6.24.1",
-    "babel-register": "^6.26.0",
-    "flow-bin": "^0.75.0",
+    "@types/react": "^16.4.7",
     "husky": "^0.14.3",
     "lint-staged": "^7.1.0",
     "parcel": "^1.8.1",
     "prettier": "^1.12.1",
     "react": "^16.4.1",
     "react-dom": "^16.4.1",
-    "serve": "^6.5.7"
+    "serve": "^6.5.7",
+    "typescript": "^3.0.1"
   },
   "peerDependencies": {
     "react": "^16.4.1",
@@ -29,39 +23,16 @@
   },
   "scripts": {
     "precommit": "lint-staged",
-    "prepublish": "yarn bundle",
-    "format": "prettier --write ./src/*.js ./example/*.js",
-    "test": "flow",
+    "prepublish": "yarn build",
     "example": "parcel example/index.html",
-    "bundle": "rm -rf dist && babel src -d dist",
+    "build": "rm -rf dist && tsc",
     "now-start": "serve -s dist",
     "now-build": "parcel build ./example/index.html"
   },
   "lint-staged": {
-    "*.{js,json,md}": [
+    "*.{tsx,ts,json,md}": [
       "prettier --write",
       "git add"
-    ]
-  },
-  "babel": {
-    "presets": [
-      [
-        "env",
-        {
-          "loose": true,
-          "targets": {
-            "browsers": [
-              ">0.5%",
-              "not dead"
-            ]
-          }
-        }
-      ],
-      "flow",
-      "react"
-    ],
-    "plugins": [
-      "transform-class-properties"
     ]
   },
   "prettier": {
