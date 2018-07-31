@@ -5,7 +5,7 @@ const linkStyle = {
   textDecoration: 'none'
 }
 
-export default () => (
+export const Header = () => (
   <header
     style={{
       display: 'flex',

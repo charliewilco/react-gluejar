@@ -10,11 +10,11 @@
     "@types/react": "^16.4.7",
     "husky": "^0.14.3",
     "lint-staged": "^7.1.0",
-    "parcel": "^1.8.1",
-    "prettier": "^1.12.1",
+    "parcel": "^1.9.7",
+    "prettier": "^1.14.0",
     "react": "^16.4.1",
     "react-dom": "^16.4.1",
-    "serve": "^6.5.7",
+    "serve": "^9.4.0",
     "typescript": "^3.0.1"
   },
   "peerDependencies": {

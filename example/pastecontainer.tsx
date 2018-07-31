@@ -1,7 +1,7 @@
-import React, { Component } from 'react'
+import * as React from 'react'
 import { render } from 'react-dom'
-import Gluejar from '../src'
-import Header from './header'
+import { Gluejar } from '../src'
+import { Header } from './header'
 
 const styles = {
   maxWidth: 600,
@@ -31,7 +31,7 @@ const Sorry = ({ error, onClose }) => (
   </div>
 )
 
-class App extends Component {
+class App extends React.Component<any, any> {
   onPaste = files => console.log(files)
 
   onError = err => console.error(err)
