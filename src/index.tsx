@@ -29,7 +29,7 @@ export interface GluejarProps {
 
 type BlobLikeFile = File | null
 
-export default class Gluejar extends React.Component<GluejarProps, GluejarState> {
+export class Gluejar extends React.Component<GluejarProps, GluejarState> {
   static displayName = 'Gluejar'
 
   static defaultProps = {
@@ -86,7 +86,7 @@ export default class Gluejar extends React.Component<GluejarProps, GluejarState>
   }
 
   componentWillUnmount() {
-    const elm: Element = this.getContainer()
+    const elm: HTMLElement = this.getContainer()
     elm.removeEventListener('paste', this.pasteHandler)
   }
 

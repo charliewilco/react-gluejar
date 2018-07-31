@@ -7,14 +7,14 @@
 ## Installation
 
 ```sh
-yarn add react-gluejar
+yarn add @charliewilco/gluejar
 ```
 
 ## Example
 
 ```js
 import React, { Component } from 'react'
-import Gluejar from 'react-gluejar'
+import { Gluejar } from '@charliewilco/gluejar'
 
 class App extends Component {
   render() {
