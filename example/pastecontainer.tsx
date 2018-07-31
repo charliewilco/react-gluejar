@@ -3,7 +3,7 @@ import { render } from 'react-dom'
 import { Gluejar } from '../src'
 import { Header } from './header'
 
-const styles = {
+const styles: React.CSSProperties = {
   maxWidth: 600,
   margin: `1rem auto`,
   textAlign: 'center'
@@ -32,8 +32,6 @@ const Sorry = ({ error, onClose }) => (
 )
 
 class App extends React.Component<any, any> {
-  onPaste = files => console.log(files)
-
   onError = err => console.error(err)
 
   render() {
@@ -41,7 +39,7 @@ class App extends React.Component<any, any> {
       <div style={styles}>
         <Header />
         <Instructions />
-        <Gluejar onPaste={this.onPaste} onError={this.onError}>
+        <Gluejar onPaste={files => console.log(files)} onError={this.onError}>
           {({ images }) =>
             images.length > 0 &&
             images.map(image => (
