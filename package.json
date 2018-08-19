@@ -3,6 +3,7 @@
   "version": "1.0.0",
   "description": "Paste images from your clipboard",
   "main": "dist/index.js",
+  "types": "dist/index.d.ts",
   "repository": "charliewilco/react-gluejar",
   "author": "Charles ⚡ <charlespeters42@gmail.com>",
   "license": "MIT",
