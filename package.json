@@ -39,7 +39,7 @@
   },
   "prettier": {
     "printWidth": 95,
-    "singleQuote": true,
+    "singleQuote": false,
     "semi": false,
     "bracketSpacing": true,
     "jsxBracketSameLine": true
