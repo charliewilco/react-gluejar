@@ -43,12 +43,5 @@
     "semi": false,
     "bracketSpacing": true,
     "jsxBracketSameLine": true
-  },
-  "now": {
-    "alias": "react-gluejar.now.sh",
-    "files": [
-      "src",
-      "example"
-    ]
   }
 }
