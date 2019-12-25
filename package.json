@@ -28,7 +28,7 @@
     "example": "parcel example/index.html",
     "build": "rm -rf dist && tsc",
     "now-start": "serve -s dist",
-    "now-build": "parcel build ./example/index.html"
+    "now-build": "parcel build ./example/index.html -o public"
   },
   "lint-staged": {
     "*.{tsx,ts,json,md}": [
@@ -42,12 +42,5 @@
     "semi": false,
     "bracketSpacing": true,
     "jsxBracketSameLine": true
-  },
-  "now": {
-    "alias": "react-gluejar.now.sh",
-    "files": [
-      "src",
-      "example"
-    ]
   }
 }
