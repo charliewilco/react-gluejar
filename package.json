@@ -28,7 +28,7 @@
     "example": "parcel example/index.html",
     "build": "rm -rf dist && tsc",
     "now-start": "serve -s dist",
-    "now-build": "parcel build ./example/index.html -o public"
+    "now-build": "parcel build ./example/index.html -d public"
   },
   "lint-staged": {
     "*.{tsx,ts,json,md}": [
