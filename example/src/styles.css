@@ -1,0 +1,39 @@
+.Container {
+  max-width: 600px;
+  margin: 1rem auto;
+  text-align: center;
+}
+
+.PastedImage {
+  max-width: 100%;
+  display: inline-block;
+  vertical-align: middle;
+  font-style: italic;
+  margin-bottom: 8px;
+}
+
+.Header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 24px;
+}
+
+.HeaderTitle {
+  font-weight: 300;
+  font-size: 18px;
+}
+
+.Nav {
+  opacity: 0.75;
+}
+
+.Link {
+  color: #147aab;
+  text-decoration: none;
+}
+
+.Instructions {
+  font-weight: 300;
+  margin-bottom: 24px;
+}
