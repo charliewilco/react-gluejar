@@ -29,11 +29,11 @@
     "precommit": "lint-staged",
     "prepublish": "yarn build",
     "example": "vite example",
-    "build": "rm -rf dist && yarn build:esm && yarn build:cjs && tsc --declaration --emitDeclarationOnly",
-    "build:esm": "esbuild src/index.ts --outfile=dist/index.esm.js --format=esm",
-    "build:cjs": "esbuild src/index.ts --outfile=dist/index.cjs.js --format=cjs",
-    "vercel-start": "serve -s dist",
-    "vercel-build": "vite build ./example/index.html -d public"
+    "prebuild": "rm -rf dist",
+    "build": "node ./scripts/build",
+    "postbuild": "tsc --declaration --emitDeclarationOnly",
+    "vercel-start": "serve -s public",
+    "vercel-build": "vite build example --outDir ../public"
   },
   "lint-staged": {
     "*.{tsx,ts,json,md}": [
