@@ -110,7 +110,7 @@ export function usePasteHandler(acceptedFiles: string[] = DEFAULT_ACCEPTED_FILES
       } else {
         dispatch({
           type: GlueActions.SET_ERROR,
-          error: `Sorry, to bother you but there was no image pasted.`,
+          error: "Sorry, to bother you but there was no image pasted.",
         });
       }
     },

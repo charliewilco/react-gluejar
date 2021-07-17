@@ -1,8 +1,9 @@
 import React from "react";
 import { render } from "react-dom";
 import { useGlueJar } from "../../src";
+// import { Gluejar } from "@charliewilco/gluejar/legacy";
 
-const App = () => {
+export const App = () => {
   const { pasted, error } = useGlueJar();
 
   return (

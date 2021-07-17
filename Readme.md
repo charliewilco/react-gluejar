@@ -12,20 +12,46 @@ yarn add @charliewilco/gluejar
 
 ## Example
 
+```tsx
+const App = () => {
+  /**
+   *
+   * This returns the error state or
+   */
+  const { pasted, error } = useGlueJar();
+
+  return (
+    <div className="Container">
+      <div>{pasted.length > 0 && pasted.map(renderPastedImage)}</div>
+    </div>
+  );
+};
+
+const renderPastedImage = (source: string) => {
+  const alt = `Pasted: ${source}`;
+  return <img src={source} key={source} alt={alt} className="PastedImage" />;
+};
+```
+
+or the `Component` API:
+
 ```js
-import React, { Component } from 'react'
-import { Gluejar } from '@charliewilco/gluejar'
+import React, { Component } from "react";
+import { Gluejar } from "@charliewilco/gluejar";
 
 class App extends Component {
+  renderImages({ images }) {
+    return (
+      images.length > 0 &&
+      images.map((image) => <img src={image} key={image} alt={`Pasted: ${image}`} />)
+    );
+  }
   render() {
     return (
-      <Gluejar onPaste={files => console.log(files)} onError={err => console.error(err)}>
-        {({ images }) =>
-          images.length > 0 &&
-          images.map(image => <img src={image} key={image} alt={`Pasted: ${image}`} />)
-        }
+      <Gluejar onPaste={(files) => console.log(files)} onError={(err) => console.error(err)}>
+        {this.renderImages}
       </Gluejar>
-    )
+    );
   }
 }
 ```

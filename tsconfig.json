@@ -11,9 +11,11 @@
     "moduleResolution": "node",
     "rootDir": "src",
     "strict": true,
-    "skipLibCheck": true
+    "skipLibCheck": true,
+    "paths": {
+      "@charliewilco/gluejar": ["./src/*"]
+    }
   },
   "include": ["src/**/*"],
-  "exclude": ["node_modules"],
-  "lib": ["dom", "es2016"]
+  "exclude": ["node_modules"]
 }

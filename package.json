@@ -28,12 +28,12 @@
   "scripts": {
     "precommit": "lint-staged",
     "prepublish": "yarn build",
-    "example": "vite example",
+    "example": "vite example --config example/vite.config.js",
     "prebuild": "rm -rf dist",
     "build": "node ./scripts/build",
     "postbuild": "tsc --declaration --emitDeclarationOnly",
     "vercel-start": "serve -s public",
-    "vercel-build": "vite build example --outDir ../public"
+    "vercel-build": "vite build example --outDir ../public --config example/vite.config.js"
   },
   "lint-staged": {
     "*.{tsx,ts,json,md}": [
