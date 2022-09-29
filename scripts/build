@@ -3,15 +3,15 @@
 const esbuild = require("esbuild");
 
 esbuild.buildSync({
-  entryPoints: ["src/index.ts", "src/legacy.ts"],
-  outdir: "dist",
-  format: "esm",
-  outExtension: { ".js": ".esm.js" },
+	entryPoints: ["src/index.ts", "src/legacy.ts"],
+	outdir: "dist",
+	format: "esm",
+	outExtension: { ".js": ".esm.js" },
 });
 
 esbuild.buildSync({
-  entryPoints: ["src/index.ts", "src/legacy.ts"],
-  outdir: "dist",
-  format: "cjs",
-  outExtension: { ".js": ".cjs.js" },
+	entryPoints: ["src/index.ts", "src/legacy.ts"],
+	outdir: "dist",
+	format: "cjs",
+	outExtension: { ".js": ".cjs.js" },
 });

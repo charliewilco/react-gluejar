@@ -1,19 +1,19 @@
 {
-  "compilerOptions": {
-    "outDir": "dist",
-    "module": "commonjs",
-    "target": "es2016",
-    "lib": ["es2017", "dom"],
-    "sourceMap": true,
-    "allowJs": false,
-    "declaration": true,
-    "jsx": "react-jsx",
-    "moduleResolution": "node",
-    "rootDir": "src",
-    "strict": true,
-    "skipLibCheck": true
-  },
-  "include": ["src/**/*"],
-  "exclude": ["node_modules"],
-  "lib": ["dom", "es2016"]
+	"compilerOptions": {
+		"outDir": "dist",
+		"module": "commonjs",
+		"target": "es2016",
+		"lib": ["es2017", "dom"],
+		"sourceMap": true,
+		"allowJs": false,
+		"declaration": true,
+		"jsx": "react-jsx",
+		"moduleResolution": "node",
+		"rootDir": "src",
+		"strict": true,
+		"skipLibCheck": true
+	},
+	"include": ["src/**/*"],
+	"exclude": ["node_modules"],
+	"lib": ["dom", "es2016"]
 }
