@@ -8,12 +8,12 @@ jobs:
 
     steps:
       - uses: actions/checkout@master
-      - name: Use Node.js 12.x
+      - name: Use Node.js 16.x
         uses: actions/setup-node@v1
         with:
-          version: 12.x
-      - name: yarn install, build, and test
+          version: 16.x
+      - name: npm install, build, and test
         run: |
-          yarn install  --frozen-lockfile
-          yarn build
-          yarn vercel-build
+          npm ci --force
+          npm run build
+          npm run vercel-build
