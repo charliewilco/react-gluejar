@@ -12,7 +12,8 @@ export const Header = () => (
 			alignItems: "center",
 			justifyContent: "space-between",
 			marginBottom: 24,
-		}}>
+		}}
+	>
 		<h1 style={{ fontWeight: 300, fontSize: 18 }}>Gluejar</h1>
 		<nav style={{ opacity: 0.75 }}>
 			<a style={linkStyle} href="https://github.com/charliewilco/react-gluejar">

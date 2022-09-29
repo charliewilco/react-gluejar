@@ -1,5 +1,5 @@
 import React from "react";
-import { render } from "react-dom";
+import { createRoot } from "react-dom/client";
 import { useGlueJar } from "../src";
 import { Header, Instructions } from "./header";
 
@@ -20,7 +20,8 @@ const App = () => {
 				maxWidth: 600,
 				margin: `1rem auto`,
 				textAlign: "center",
-			}}>
+			}}
+		>
 			<Header />
 			<Instructions />
 			{error !== null && <span>{error}</span>}
@@ -34,4 +35,10 @@ const App = () => {
 	);
 };
 
-render(<App />, document.getElementById("root"));
+const element = document.getElementById("root");
+
+if (element !== null) {
+	const root = createRoot(element);
+
+	root.render(<App />);
+}
